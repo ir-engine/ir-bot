@@ -23,7 +23,7 @@ import {
 } from './xrBotHookFunctions'
 import { XRState } from '@etherealengine/spatial/src/xr/XRState'
 import { NetworkState } from '@etherealengine/network'
-import { SceneState } from '@etherealengine/engine/src/scene/Scene'
+import { GLTFSourceState } from '@etherealengine/engine/src/scene/GLTFSourceState'
 import { AvatarComponent } from '@etherealengine/engine/src/avatar/components/AvatarComponent'
 import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
 
@@ -63,7 +63,7 @@ export function worldNetworkReady() {
 }
 
 export function sceneLoaded() {
-  return getState(SceneState).sceneLoaded
+  return getState(GLTFSourceState).sceneLoaded
 }
 
 export function getPlayerPosition() {
