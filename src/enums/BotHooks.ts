@@ -6,7 +6,6 @@ export enum BotHooks {
   GetPlayerRotation = 'BotHooks_GetPlayerRotation',
   GetPlayerScale = 'BotHooks_GetPlayerScale',
   GetPlayerTransform = 'BotHooks_GetPlayerTransform',
-  GetSceneMetadata = 'BotHooks_GetSceneMetadata',
   GetWorldMetadata = 'BotHooks_GetWorldMetadata',
   RotatePlayer = 'BotHooks_RotatePlayer',
   GetWorldNetworkPeers = 'BotHooks_GetWorldNetworkPeers',
