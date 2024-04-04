@@ -23,7 +23,7 @@ import {
 } from './xrBotHookFunctions'
 import { XRState } from '@etherealengine/spatial/src/xr/XRState'
 import { NetworkState } from '@etherealengine/network'
-import { SceneState } from '@etherealengine/engine/src/scene/Scene'
+import { SceneState } from '@etherealengine/engine/src/scene/SceneState'
 import { AvatarComponent } from '@etherealengine/engine/src/avatar/components/AvatarComponent'
 import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
 
@@ -36,7 +36,6 @@ export const BotHookFunctions = {
   [BotHooks.GetPlayerScale]: getPlayerScale,
   [BotHooks.GetPlayerTransform]: getPlayerTransform,
   [BotHooks.RotatePlayer]: rotatePlayer,
-  [BotHooks.GetSceneMetadata]: getSceneMetadata,
   [BotHooks.GetWorldNetworkPeers]: getPeers,
   [BotHooks.SerializeEngine]: serializeEngine,
   [XRBotHooks.OverrideXR]: overrideXR,
@@ -89,10 +88,6 @@ export function rotatePlayer({ angle }) {
 
 export function getPeers() {
   return Object.entries(NetworkState.worldNetwork.peers)
-}
-
-export function getSceneMetadata() {
-  return Engine.instance.scene.toJSON()
 }
 
 export function getWorldMetadata() {}
