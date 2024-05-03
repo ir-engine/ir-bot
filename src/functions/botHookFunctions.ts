@@ -23,12 +23,11 @@ import {
 } from './xrBotHookFunctions'
 import { XRState } from '@etherealengine/spatial/src/xr/XRState'
 import { NetworkState } from '@etherealengine/network'
-import { SceneState } from '@etherealengine/engine/src/scene/SceneState'
 import { AvatarComponent } from '@etherealengine/engine/src/avatar/components/AvatarComponent'
 import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
 
 export const BotHookFunctions = {
-  [BotHooks.IsBot]:isBot,
+  [BotHooks.IsBot]: isBot,
   [BotHooks.LocationReady]: worldNetworkReady,
   [BotHooks.SceneLoaded]: sceneLoaded,
   [BotHooks.GetPlayerPosition]: getPlayerPosition,
@@ -53,8 +52,8 @@ export const BotHookFunctions = {
 
 // === ENGINE === //
 
-export function isBot(){
-  return  navigator.userAgent === BotUserAgent
+export function isBot() {
+  return navigator.userAgent === BotUserAgent
 }
 
 export function worldNetworkReady() {
@@ -62,7 +61,7 @@ export function worldNetworkReady() {
 }
 
 export function sceneLoaded() {
-  return getState(SceneState).sceneLoaded
+  return false // TODO
 }
 
 export function getPlayerPosition() {
