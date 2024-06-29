@@ -2,19 +2,19 @@
 
 import { Quaternion, Vector3 } from 'three'
 
-import { EngineState } from '@etherealengine/spatial/src/EngineState'
-import { XRAction, XRState } from '@etherealengine/spatial/src/xr/XRState'
-import { dispatchAction, getMutableState } from '@etherealengine/hyperflux'
+import { XRState } from '@etherealengine/spatial/src/xr/XRState'
+import { getMutableState } from '@etherealengine/hyperflux'
 import { requestXRSession } from '@etherealengine/spatial/src/xr/XRSessionFunctions'
 
 import { WebXREventDispatcher } from '../../webxr-emulator/WebXREventDispatcher'
+import { POLYFILL_ACTIONS } from '../../webxr-emulator/actions'
 
 export async function overrideXR() {
   // inject the webxr polyfill from the webxr emulator source - this is a script added by the bot
   // globalThis.WebXRPolyfillInjection()
 
-  const { EtherealEngineWebXRPolyfill } = await import('../../webxr-emulator/CustomWebXRPolyfill')
-  new EtherealEngineWebXRPolyfill()
+  const { CustomWebXRPolyfill } = await import('../../webxr-emulator/CustomWebXRPolyfill')
+  new CustomWebXRPolyfill()
   // override session supported request, it hangs indefinitely for some reason
   ;(navigator as any).xr.isSessionSupported = () => {
     return true
@@ -54,7 +54,7 @@ export async function overrideXR() {
 
   // send our device info to the polyfill API so it knows our capabilities
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-device-init',
+    type: POLYFILL_ACTIONS.DEVICE_INIT,
     detail: { stereoEffect: false, deviceDefinition }
   })
 }
@@ -71,24 +71,24 @@ export function xrInitialized() {
 export function startXR() {
   requestXRSession()
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-pose',
+    type: POLYFILL_ACTIONS.HEADSET_POSE_CHANGE,
     detail: {
       position: [0, 1.6, 0],
       quaternion: [0, 0, 0, 1]
     }
   })
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'rightController',
+      objectName: 'right-controller',
       position: [0.5, 1.5, -1],
       quaternion: [0, 0, 0, 1]
     }
   })
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'leftController',
+      objectName: 'left-controller',
       position: [-0.5, 1.5, -1],
       quaternion: [0, 0, 0, 1]
     }
@@ -103,8 +103,7 @@ export function startXR() {
  * @returns {function}
  */
 export function pressControllerButton(args) {
-  WebXREventDispatcher.instance.dispatchEvent({ type: 'webxr-input-button', detail: args })
-  // )
+  WebXREventDispatcher.instance.dispatchEvent({ type: POLYFILL_ACTIONS.BUTTON_STATE_CHANGE, detail: args })
 }
 
 /**
@@ -115,15 +114,14 @@ export function pressControllerButton(args) {
  * @returns {function}
  */
 export function moveControllerStick(args) {
-  WebXREventDispatcher.instance.dispatchEvent({ type: 'webxr-input-axes', detail: args })
-  // )
+  WebXREventDispatcher.instance.dispatchEvent({ type: POLYFILL_ACTIONS.ANALOG_VALUE_CHANGE, detail: args })
 }
 
 export function getXRInputPosition() {
   // todo - reimplement
 }
 
-type InputSource = 'head' | 'leftController' | 'rightController'
+type InputSource = 'head' | 'left-controller' | 'right-controller'
 
 const headPosition = new Vector3(0, 1.6, 0)
 const headRotation = new Quaternion()
@@ -136,9 +134,9 @@ export const getInputSourcePosition = (inputSource: InputSource) => {
   switch (inputSource) {
     case 'head':
       return headPosition
-    case 'leftController':
+    case 'left-controller':
       return leftControllerPosition
-    case 'rightController':
+    case 'right-controller':
       return rightControllerPosition
   }
 }
@@ -146,9 +144,9 @@ export const getInputSourceRotation = (inputSource: InputSource) => {
   switch (inputSource) {
     case 'head':
       return headRotation
-    case 'leftController':
+    case 'left-controller':
       return leftControllerRotation
-    case 'rightController':
+    case 'right-controller':
       return rightControllerRotation
   }
 }
@@ -160,7 +158,7 @@ export const sendXRInputData = () => {
   tweens.forEach((call) => call())
   if (!tweensDirty) return
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-pose',
+    type: POLYFILL_ACTIONS.HEADSET_POSE_CHANGE,
     detail: {
       position: headPosition.toArray(),
       quaternion: headRotation.toArray()
@@ -168,18 +166,18 @@ export const sendXRInputData = () => {
   })
   // )
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'leftController',
+      objectName: 'left-controller',
       position: leftControllerPosition.toArray(),
       quaternion: leftControllerRotation.toArray()
     }
   })
   // )
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'rightController',
+      objectName: 'right-controller',
       position: rightControllerPosition.toArray(),
       quaternion: rightControllerRotation.toArray()
     }
@@ -195,24 +193,24 @@ type SetXRInputPoseProps = {
 
 export function setXRInputPosition(args: SetXRInputPoseProps) {
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-pose',
+    type: POLYFILL_ACTIONS.HEADSET_POSE_CHANGE,
     detail: {
       position: [args.head[0], args.head[1], args.head[2]],
       quaternion: [args.head[3], args.head[4], args.head[5], args.head[6]]
     }
   })
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'leftController',
+      objectName: 'left-controller',
       position: [args.left[0], args.left[1], args.left[2]],
       quaternion: [args.left[3], args.left[4], args.left[5], args.left[6]]
     }
   })
   WebXREventDispatcher.instance.dispatchEvent({
-    type: 'webxr-input-pose',
+    type: POLYFILL_ACTIONS.CONTROLLER_POSE_CHANGE,
     detail: {
-      objectName: 'rightController',
+      objectName: 'right-controller',
       position: [args.right[0], args.right[1], args.right[2]],
       quaternion: [args.right[3], args.right[4], args.right[5], args.right[6]]
     }
@@ -264,7 +262,7 @@ export function updateHead(args: { position?: number[]; rotation?: number[] }) {
  * @returns {function}
  */
 export function updateController(args: { objectName: string; position: number[]; rotation: number[] }) {
-  if (args.objectName === 'leftController') {
+  if (args.objectName === 'left-controller') {
     leftControllerPosition.fromArray(args.position)
     leftControllerRotation.fromArray(args.rotation)
   } else {
@@ -279,3 +277,5 @@ export async function simulateXR() {
   await xrSupported()
   await startXR()
 }
+
+globalThis.simulateXR = simulateXR

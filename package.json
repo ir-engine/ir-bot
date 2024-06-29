@@ -27,13 +27,15 @@
     "precommit": "no-master-commits -b main"
   },
   "dependencies": {
-    "gl-matrix": "^3.4.3",
+		"bootstrap": "^5.2.3",
+		"gl-matrix": "^3.1.0",
+		"localforage": "^1.10.0",
+		"webxr-polyfill": "github:felixtrz/webxr-polyfill#81d2db4f01b518f2c42b74a90973dac095515e9f",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0",
     "puppeteer": "^19.6.3",
-    "ts-node": "10.9.1",
-    "webxr-emulator": "etherealengine/WebXR-emulator-extension"
+    "ts-node": "10.9.1"
   },
   "license": "ISC",
   "devDependencies": {
