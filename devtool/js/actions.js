@@ -30,24 +30,25 @@ export const EMULATOR_ACTIONS = {
 /**
  * Events triggered by the content script and caught and processed by the custom WebXR Polyfill
  */
-export const POLYFILL_ACTIONS = {
-	HEADSET_POSE_CHANGE: 'pa-headset-pose-change',
-	CONTROLLER_POSE_CHANGE: 'pa-controller-pose-change',
-	CONTROLLER_VISIBILITY_CHANGE: 'pa-controller-visibility-change',
-	BUTTON_STATE_CHANGE: 'pa-button-state-change',
-	ANALOG_VALUE_CHANGE: 'pa-analog-value-change',
-	DEVICE_TYPE_CHANGE: 'pa-device-type-change',
-	STEREO_TOGGLE: 'pa-stereo-toggle',
-	KEYBOARD_EVENT: 'pa-keyboard-event',
-	EXIT_IMMERSIVE: 'pa-exit-immersive',
-	DEVICE_INIT: 'pa-device-init',
-	ROOM_DIMENSION_CHANGE: 'pa-room-dimension-change',
-	INPUT_MODE_CHANGE: 'pa-input-mode-change',
-	HAND_POSE_CHANGE: 'pa-hand-pose-change',
-	HAND_VISIBILITY_CHANGE: 'pa-hand-visibility-change',
-	PINCH_VALUE_CHANGE: 'pa-pinch-value-change',
-	USER_OBJECTS_CHANGE: 'pa-user-objects-change',
-};
+export const POLYFILL_ACTIONS = EMULATOR_ACTIONS
+// {
+// 	HEADSET_POSE_CHANGE: 'pa-headset-pose-change',
+// 	CONTROLLER_POSE_CHANGE: 'pa-controller-pose-change',
+// 	CONTROLLER_VISIBILITY_CHANGE: 'pa-controller-visibility-change',
+// 	BUTTON_STATE_CHANGE: 'pa-button-state-change',
+// 	ANALOG_VALUE_CHANGE: 'pa-analog-value-change',
+// 	DEVICE_TYPE_CHANGE: 'pa-device-type-change',
+// 	STEREO_TOGGLE: 'pa-stereo-toggle',
+// 	KEYBOARD_EVENT: 'pa-keyboard-event',
+// 	EXIT_IMMERSIVE: 'pa-exit-immersive',
+// 	DEVICE_INIT: 'pa-device-init',
+// 	ROOM_DIMENSION_CHANGE: 'pa-room-dimension-change',
+// 	INPUT_MODE_CHANGE: 'pa-input-mode-change',
+// 	HAND_POSE_CHANGE: 'pa-hand-pose-change',
+// 	HAND_VISIBILITY_CHANGE: 'pa-hand-visibility-change',
+// 	PINCH_VALUE_CHANGE: 'pa-pinch-value-change',
+// 	USER_OBJECTS_CHANGE: 'pa-user-objects-change',
+// };
 
 /**
  * Events triggered from the client side that are caught by the content script and then relayed back to the emulator side

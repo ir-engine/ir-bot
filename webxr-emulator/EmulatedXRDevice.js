@@ -132,14 +132,14 @@ export default class EmulatedXRDevice extends XRDevice {
 		const session = this.sessions.get(sessionId);
 
 		// Remove old canvas first
-		if (session.immersive && session.baseLayer) {
-			this._removeBaseLayerCanvasFromDiv(sessionId);
-		}
+		// if (session.immersive && session.baseLayer) {
+		// 	this._removeBaseLayerCanvasFromDiv(sessionId);
+		// }
 
 		session.baseLayer = layer;
-		if (session.immersive && session.baseLayer) {
-			this._appendBaseLayerCanvasToDiv(sessionId);
-		}
+		// if (session.immersive && session.baseLayer) {
+		// 	this._appendBaseLayerCanvasToDiv(sessionId);
+		// }
 	}
 
 	isSessionSupported(mode) {
@@ -961,6 +961,7 @@ export default class EmulatedXRDevice extends XRDevice {
 		WebXREventDispatcher.instance.addEventListener(
 			POLYFILL_ACTIONS.HEADSET_POSE_CHANGE,
 			(event) => {
+				console.log('HEADSET_POSE_CHANGE', event.detail);
 				const positionArray = event.detail.position;
 				const quaternionArray = event.detail.quaternion;
 				this._updatePose(positionArray, quaternionArray);

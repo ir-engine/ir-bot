@@ -31,9 +31,11 @@ const connection = {
 	},
 };
 
-const executeAction = (action, payload = {}) => {
+const executeAction = (action, detail = {}) => {
+	const payload = { detail };
 	payload.tabId = tabId;
 	payload.action = action;
+	payload.type = action
 	WebXREventDispatcher.instance.dispatchEvent(payload);
 	// try {
 	// 	connection.port.postMessage(payload);
