@@ -213,7 +213,7 @@ export default class XRScene {
 			(_event) => {
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-				if (renderer) renderer.setSize(width, height);
+				if (this.renderer) this.renderer.setSize(width, height);
 				camera.aspect = width / height;
 				camera.updateProjectionMatrix();
 			},
