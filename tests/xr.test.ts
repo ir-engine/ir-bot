@@ -78,12 +78,11 @@ describe('WebXR', () => {
     getMutableComponent(viewerEntity, RendererComponent).set(renderer)
   })
 
-  afterEach(() => {
-    destroyEngine()
+  afterEach(async () => {
+    await destroyEngine()
   })
 
   it('can define and initialize a device', async () => {
-    // send our device info to the polyfill API so it knows our capabilities
     WebXREventDispatcher.instance.dispatchEvent({
       type: POLYFILL_ACTIONS.DEVICE_INIT,
       detail: { stereoEffect: false, deviceDefinition }
