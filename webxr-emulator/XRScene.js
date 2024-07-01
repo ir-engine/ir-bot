@@ -21,6 +21,7 @@ import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.j
 import { XRMesh } from './api/XRMesh';
 import XRSpace from 'webxr-polyfill/src/api/XRSpace';
 import { mat4 } from 'gl-matrix';
+import { isClient } from '@etherealengine/common/src/utils/getEnvironment';
 
 const DEFAULT_CAMERA_POSITION = [0, 1.6, 0];
 const PLANE_CONFIG = {
@@ -158,17 +159,20 @@ export default class XRScene {
 		const width = window.innerWidth;
 		const height = window.innerHeight;
 
-		const canvas = document.createElement('canvas');
-		const context = canvas.getContext('webgl2', { antialias: true });
-		context.globalCompositeOperation = 'destination-over';
-
-		const renderer = new WebGLRenderer({ canvas: canvas, context: context });
-		renderer.setSize(width, height);
-		canvas.width = width;
-		canvas.height = height;
-		renderer.domElement.oncontextmenu = () => {
-			return false;
-		};
+		if (isClient) {
+			const canvas = document.createElement('canvas');
+			const context = canvas.getContext('webgl2', { antialias: true });
+			context.globalCompositeOperation = 'destination-over';
+			
+			const renderer = new WebGLRenderer({ canvas: canvas, context: context });
+			renderer.setSize(width, height);
+			canvas.width = width;
+			canvas.height = height;
+			renderer.domElement.oncontextmenu = () => {
+				return false;
+			};
+			this.renderer = renderer;
+		}
 
 		const scene = new Scene();
 		scene.background = new Color(0x444444);
@@ -190,6 +194,9 @@ export default class XRScene {
 		// @TODO: only animate when headset pose change
 		const animate = () => {
 			requestAnimationFrame(animate);
+			const renderer = this.renderer;
+			if (!renderer) return;
+
 			renderer.render(scene, camera);
 			const canvas = renderer.domElement;
 			var destCtx = canvas.getContext('2d');
@@ -206,14 +213,13 @@ export default class XRScene {
 			(_event) => {
 				const width = window.innerWidth;
 				const height = window.innerHeight;
-				renderer.setSize(width, height);
+				if (renderer) renderer.setSize(width, height);
 				camera.aspect = width / height;
 				camera.updateProjectionMatrix();
 			},
 			false,
 		);
 
-		this.renderer = renderer;
 		this.scene = scene;
 		this.camera = camera;
 		this.raycaster = new Raycaster();
@@ -226,7 +232,7 @@ export default class XRScene {
 
 	inject(canvasContainer) {
 		const appendCanvas = () => {
-			canvasContainer.appendChild(this.renderer.domElement);
+			if (this.renderer) canvasContainer.appendChild(this.renderer.domElement);
 		};
 
 		if (document.body) {
@@ -237,8 +243,10 @@ export default class XRScene {
 	}
 
 	eject() {
-		const element = this.renderer.domElement;
-		element.parentElement.remove();
+		if (this.renderer) {
+			const element = this.renderer.domElement;
+			element.parentElement.remove();
+		}
 	}
 
 	setCanvas(canvas) {

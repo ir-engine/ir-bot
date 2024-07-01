@@ -26,7 +26,7 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "outDir": "./dist",
-    "types": ["vite/client","mocha"]
+    "types": ["vite/client"]
   },
   "exclude": [
     "../projects/projects/**",
@@ -37,5 +37,5 @@
     "../../../server-core/src/*",
     "./**/*.ts",
     "./**/*.tsx"
-  ]
+, "../../../spatial/tests/util/patchNodeForWebXREmulator.ts", "../../../spatial/tests/util/patchDOMMatrix.ts"  ]
 }

@@ -10,6 +10,7 @@ import { PRIVATE as XRSESSION_PRIVATE } from 'webxr-polyfill/src/api/XRSession';
 import XRScene from './XRScene';
 import XRTransientInputHitTestSource from './api/XRTransientInputHitTestSource';
 import { WebXREventDispatcher } from './WebXREventDispatcher';
+import { isClient } from '@etherealengine/common/src/utils/getEnvironment';
 
 const DEFAULT_MODES = ['inline'];
 
@@ -92,9 +93,11 @@ export default class EmulatedXRDevice extends XRDevice {
 			return canvasContainer;
 		};
 
-		this.appCanvasContainer = createCanvasContainer(APP_CANVAS_Z_INDEX);
-		// console.log(this.appCanvasContainer);
-		this.arCanvasContainer = createCanvasContainer(AR_CANVAS_Z_INDEX);
+		if (isClient) {
+			this.appCanvasContainer = createCanvasContainer(APP_CANVAS_Z_INDEX);
+			// console.log(this.appCanvasContainer);
+			this.arCanvasContainer = createCanvasContainer(AR_CANVAS_Z_INDEX);
+		}
 
 		this.originalCanvasParams = {
 			parentElement: null,
