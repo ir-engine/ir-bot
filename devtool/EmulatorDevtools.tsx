@@ -14,8 +14,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import { XRState } from '@etherealengine/spatial/src/xr/XRState.js'
 
-const setup = async () => {
-  await overrideXR()
+const setup = async (mode: 'immersive-vr' | 'immersive-ar') => {
+  await overrideXR({ mode })
   await EmulatorSettings.instance.load()
   const device = new EmulatedDevice()
   device.on('pose', syncDevicePose)
@@ -24,13 +24,13 @@ const setup = async () => {
   return device
 }
 
-export const EmulatorDevtools = () => {
+export const EmulatorDevtools = (props: { mode: 'immersive-vr' | 'immersive-ar' }) => {
   const xrState = useMutableState(XRState)
   const xrActive = xrState.sessionActive.value && !xrState.requestingSession.value
 
   const deviceState = useHookstate(null as null | EmulatedDevice)
   useImmediateEffect(() => {
-    setup().then((device) => {
+    setup(props.mode).then((device) => {
       deviceState.set(device)
     })
   }, [])
@@ -39,7 +39,7 @@ export const EmulatorDevtools = () => {
     if (xrActive) {
       endXRSession()
     } else {
-      requestXRSession({ mode: 'immersive-vr' })
+      requestXRSession({ mode: props.mode })
     }
   }
 
@@ -62,11 +62,13 @@ export const EmulatorDevtools = () => {
       >
         <div className="flex flex-no-wrap flex-row h-10 bg-gray-800 text-gray-900 text-xs select-none">
           <Button className="my-1 ml-auto mr-6 px-10" onClick={toggleXR} disabled={xrState.requestingSession.value}>
-            {xrActive ? 'Exit XR' : 'Enter XR'}
+            {(xrActive ? 'Exit ' : 'Enter ') + (props.mode === 'immersive-ar' ? 'AR' : 'VR')}
           </Button>
-          <Button className="my-1 ml-auto mr-6 px-10" onClick={togglePlacement} disabled={!xrActive}>
-            Place Scene
-          </Button>
+          {props.mode === 'immersive-ar' && (
+            <Button className="my-1 ml-auto mr-6 px-10" onClick={togglePlacement} disabled={!xrActive}>
+              Place Scene
+            </Button>
+          )}
         </div>
         {deviceState.value && <Devtool device={deviceState.value} />}
       </div>

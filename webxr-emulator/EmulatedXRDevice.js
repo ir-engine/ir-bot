@@ -47,6 +47,7 @@ export default class EmulatedXRDevice extends XRDevice {
 
 		this.modes = config.modes || DEFAULT_MODES;
 		this.features = config.features || [];
+		this.environmentBlendMode = config.environmentBlendMode || 'opaque';
 		this.xrScene = new XRScene();
 
 		// headset
@@ -193,8 +194,8 @@ export default class EmulatedXRDevice extends XRDevice {
 		const session = new Session(mode, enabledFeatures);
 		this.sessions.set(session.id, session);
 		if (mode === 'immersive-ar') {
-			document.body.appendChild(this.arCanvasContainer);
-			this.xrScene.inject(this.arCanvasContainer);
+			// document.body.appendChild(this.arCanvasContainer);
+			// this.xrScene.inject(this.arCanvasContainer);
 		}
 		if (session.immersive) {
 			this.dispatchEvent('@@webxr-polyfill/vr-present-start', session.id);
@@ -776,10 +777,10 @@ export default class EmulatedXRDevice extends XRDevice {
 	}
 
 	_notifyLeaveImmersive(sessionId) {
-		const session = this.sessions.get(sessionId);
-		if (session.mode === 'immersive-ar') {
-			this.arCanvasContainer.remove();
-		}
+		// const session = this.sessions.get(sessionId);
+		// if (session.mode === 'immersive-ar') {
+		// 	this.arCanvasContainer.remove();
+		// }
 		dispatchCustomEvent(CLIENT_ACTIONS.EXIT_IMMERSIVE, {});
 	}
 

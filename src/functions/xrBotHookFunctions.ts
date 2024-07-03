@@ -9,7 +9,7 @@ import { requestXRSession } from '@etherealengine/spatial/src/xr/XRSessionFuncti
 import { WebXREventDispatcher } from '../../webxr-emulator/WebXREventDispatcher'
 import { POLYFILL_ACTIONS } from '../../webxr-emulator/actions'
 
-export async function overrideXR() {
+export async function overrideXR(args: { mode: 'immersive-vr' | 'immersive-ar' }) {
   // inject the webxr polyfill from the webxr emulator source - this is a script added by the bot
   // globalThis.WebXRPolyfillInjection()
 
@@ -23,7 +23,7 @@ export async function overrideXR() {
   const deviceDefinition = {
     id: 'Oculus Quest',
     name: 'Oculus Quest',
-    modes: ['inline', 'immersive-vr'],
+    modes: ['inline', 'immersive-vr', 'immersive-ar'],
     headset: {
       hasPosition: true,
       hasRotation: true
@@ -49,7 +49,8 @@ export async function overrideXR() {
         hasSqueezeButton: true,
         isComplex: true
       }
-    ]
+    ],
+    environmentBlendMode: args.mode === 'immersive-vr' ? 'opaque' : 'additive'
   }
 
   // send our device info to the polyfill API so it knows our capabilities
@@ -273,7 +274,7 @@ export function updateController(args: { objectName: string; position: number[];
 
 export async function simulateXR() {
   // await loadScript(getState(EngineState).publicPath + '/scripts/webxr-polyfill.js')
-  await overrideXR()
+  await overrideXR({ mode: 'immersive-vr' })
   await xrSupported()
   await startXR()
 }
