@@ -964,7 +964,6 @@ export default class EmulatedXRDevice extends XRDevice {
 		WebXREventDispatcher.instance.addEventListener(
 			POLYFILL_ACTIONS.HEADSET_POSE_CHANGE,
 			(event) => {
-				console.log('HEADSET_POSE_CHANGE', event.detail);
 				const positionArray = event.detail.position;
 				const quaternionArray = event.detail.quaternion;
 				this._updatePose(positionArray, quaternionArray);

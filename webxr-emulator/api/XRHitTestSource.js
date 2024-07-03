@@ -5,9 +5,9 @@ import XRRay from './XRRay';
 export default class XRHitTestSource {
   constructor(session, options) {
     // @TODO: Support options.entityTypes and options.offsetRay
-    if (options.entityTypes && options.entityTypes.length > 0) {
-      throw new Error('XRHitTestSource does not support entityTypes option yet.');
-    }
+    // if (options.entityTypes && options.entityTypes.length > 0) {
+    //   throw new Error('XRHitTestSource does not support entityTypes option yet.');
+    // }
     this[PRIVATE] = {
       session,
       space: options.space,

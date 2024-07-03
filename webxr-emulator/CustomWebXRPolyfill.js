@@ -92,6 +92,8 @@ export class CustomWebXRPolyfill extends WebXRPolyfill {
 					if (mode === 'immersive-vr' || mode === 'immersive-ar') {
 						activeImmersiveSession = session;
 
+						session.interactionMode = 'world-space'
+
 						// DOM-Overlay API
 						const optionalFeatures = enabledFeatures.optionalFeatures;
 						const domOverlay = enabledFeatures.domOverlay;

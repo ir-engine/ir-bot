@@ -43,6 +43,16 @@ export const EmulatorDevtools = () => {
     }
   }
 
+  const togglePlacement = () => {
+    if (xrState.scenePlacementMode.value !== 'placing') {
+      xrState.scenePlacementMode.set('placing')
+      xrState.sceneScaleAutoMode.set(false)
+      xrState.sceneScaleTarget.set(0.1)
+    } else {
+      xrState.scenePlacementMode.set('placed')
+    }
+  }
+
   return (
     <>
       <style type="text/css">{devtoolCSS.toString()}</style>
@@ -50,9 +60,14 @@ export const EmulatorDevtools = () => {
         id="devtools"
         className="flex flex-no-wrap flex-col h-full overflow-hidden m-0 bg-gray-900 text-gray-900 text-xs select-none h-full overflow-hidden"
       >
-        <Button className="my-1 ml-auto mr-6 px-10" onClick={toggleXR} disabled={xrState.requestingSession.value}>
-          {xrActive ? 'Exit XR' : 'Enter XR'}
-        </Button>
+        <div className="flex flex-no-wrap flex-row h-10 bg-gray-800 text-gray-900 text-xs select-none">
+          <Button className="my-1 ml-auto mr-6 px-10" onClick={toggleXR} disabled={xrState.requestingSession.value}>
+            {xrActive ? 'Exit XR' : 'Enter XR'}
+          </Button>
+          <Button className="my-1 ml-auto mr-6 px-10" onClick={togglePlacement} disabled={!xrActive}>
+            Place Scene
+          </Button>
+        </div>
         {deviceState.value && <Devtool device={deviceState.value} />}
       </div>
     </>
