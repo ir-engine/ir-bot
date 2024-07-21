@@ -8,7 +8,7 @@ import { POLYFILL_ACTIONS } from '../webxr-emulator/actions'
 import { getMutableState, getState } from '@etherealengine/hyperflux'
 import { XRState } from '@etherealengine/spatial/src/xr/XRState'
 import { EngineState } from '@etherealengine/spatial/src/EngineState'
-import { RendererComponent } from '@etherealengine/spatial/src/renderer/WebGLRendererSystem'
+import { RendererComponent, initializeEngineRenderer } from '@etherealengine/spatial/src/renderer/WebGLRendererSystem'
 import { ECSState, Timer, getMutableComponent, setComponent } from '@etherealengine/ecs'
 
 const deviceDefinition = {
@@ -43,17 +43,6 @@ const deviceDefinition = {
   ]
 }
 
-const mockCanvas = () => {
-  return {
-    getDrawingBufferSize: () => 0,
-    getContext: () => {},
-    parentElement: {
-      clientWidth: 100,
-      clientHeight: 100
-    }
-  } as any as HTMLCanvasElement
-}
-
 describe('WebXR', () => {
   beforeAll(async () => {
     const { CustomWebXRPolyfill } = await import('../webxr-emulator/CustomWebXRPolyfill')
@@ -72,7 +61,7 @@ describe('WebXR', () => {
     getMutableState(ECSState).timer.set(timer)
 
     const { originEntity, localFloorEntity, viewerEntity } = getState(EngineState)
-    mockEngineRenderer(viewerEntity, mockCanvas())
+    mockEngineRenderer(viewerEntity)
     setComponent(viewerEntity, RendererComponent, { scenes: [originEntity, localFloorEntity, viewerEntity] })
   })
 
