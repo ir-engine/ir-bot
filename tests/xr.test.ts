@@ -1,4 +1,4 @@
-import { MockEngineRenderer } from '@etherealengine/spatial/tests/util/MockEngineRenderer'
+import { mockEngineRenderer } from '@etherealengine/spatial/tests/util/MockEngineRenderer'
 import { createEngine, destroyEngine } from '@etherealengine/ecs/src/Engine'
 import { initializeSpatialEngine } from '@etherealengine/spatial/src/initializeEngine'
 import { requestXRSession } from '@etherealengine/spatial/src/xr/XRSessionFunctions'
@@ -72,10 +72,8 @@ describe('WebXR', () => {
     getMutableState(ECSState).timer.set(timer)
 
     const { originEntity, localFloorEntity, viewerEntity } = getState(EngineState)
-    setComponent(viewerEntity, RendererComponent, { canvas: mockCanvas() })
-    const renderer = new MockEngineRenderer()
-    renderer.scenes = [originEntity, localFloorEntity, viewerEntity]
-    getMutableComponent(viewerEntity, RendererComponent).set(renderer)
+    mockEngineRenderer(viewerEntity, mockCanvas())
+    setComponent(viewerEntity, RendererComponent, { scenes: [originEntity, localFloorEntity, viewerEntity] })
   })
 
   afterEach(async () => {
