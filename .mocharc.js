@@ -1,12 +1,21 @@
 module.exports = {
-  'fail-zero': false,
-  parallel: true,
-  spec: ['tests/**/*.test.ts'],
+  failZero: false,
+  parallel: false,
   require: [
     'tests/mocha.env', // init env here
-    'ts-node/register'
+    'jsdom-global/register'
+  ],
+  spec: [
+    './**/*.test.ts',
+    './**/*.test.tsx'
   ],
   extension: [
-    'ts'
-  ]
+    'ts',
+    'tsx'
+  ],
+  bail: true,
+  exit: true,
+  recursive: true,
+  jobs: '1',
+  timeout: '60000'
 };

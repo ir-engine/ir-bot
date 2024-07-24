@@ -6,9 +6,6 @@
     "type": "git",
     "url": "git://github.com/etherealengine/etherealengine.git"
   },
-  "etherealEngine": {
-    "version": "1.1.0"
-  },
   "engines": {
     "node": ">= 16.3.0"
   },
@@ -21,19 +18,23 @@
     "dev": "ts-node --swc ./src/index.ts",
     "dev-koa": "ts-node --swc ./src/index_koa.ts",
     "build": "tsc",
+    "test": "vitest run",
     "check-errors": "tsc --noemit",
     "validate": "npm run test",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "precommit": "no-master-commits -b main"
   },
   "dependencies": {
-    "gl-matrix": "^3.4.3",
+    "bootstrap": "^5.2.3",
+    "geometry-interfaces": "^1.1.4",
+    "gl-matrix": "^3.1.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0",
+    "localforage": "^1.10.0",
     "puppeteer": "^19.6.3",
     "ts-node": "10.9.1",
-    "webxr-emulator": "etherealengine/WebXR-emulator-extension"
+    "webxr-polyfill": "github:felixtrz/webxr-polyfill#81d2db4f01b518f2c42b74a90973dac095515e9f"
   },
   "license": "ISC",
   "devDependencies": {
