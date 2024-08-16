@@ -2,8 +2,8 @@
 
 ```ts
 import { Vector3 } from 'three'
-import { EtherealEngineBot } from 'ee-bot/src/bot'
-import { BotHooks } from 'ee-bot/src/bot/enums/BotHooks'
+import { EtherealEngineBot } from '@etherealengine/ee-bot/src/bot'
+import { BotHooks } from '@etherealengine/ee-bot/src/bot/enums/BotHooks'
 
 const maxTimeout = 10 * 1000
 const bot = new EtherealEngineBot({ name: 'bot-1', headless: false, verbose: false })
