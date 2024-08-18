@@ -1,8 +1,8 @@
-import type { ProjectConfigInterface } from '@etherealengine/projects/ProjectConfigInterface'
+import type { ProjectConfigInterface } from '@ir-engine/projects/ProjectConfigInterface'
 
 const config: ProjectConfigInterface = {
   onEvent: undefined,
-  thumbnail: '/static/etherealengine_thumbnail.jpg',
+  thumbnail: '/static/ir-engine_thumbnail.jpg',
   routes: {},
   worldInjection: () => import('./injectBotModule'),
   services: undefined,

@@ -1,7 +1,7 @@
-import { EtherealEngineBot } from '../bot-class'
+import { IREngineBot } from '../bot-class'
 
 export class PageUtils {
-  bot: EtherealEngineBot
+  bot: IREngineBot
   uiCanvas: string
   constructor(bot) {
     this.bot = bot

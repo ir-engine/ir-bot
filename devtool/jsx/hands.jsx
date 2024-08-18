@@ -16,8 +16,8 @@ import { HAND_STRINGS } from '../js/constants';
 import React from 'react';
 import { createAnalogPressFunction } from './controllers.jsx';
 
-import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
+import config from '@ir-engine/common/src/config';
+const assetURL = config.client.fileServer + '/projects/ir-engine/ir-bot/devtool'
 
 
 export default function HandPanel({ deviceKey, device }) {

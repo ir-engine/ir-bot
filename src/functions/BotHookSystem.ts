@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
-import { isDev } from '@etherealengine/common/src/config'
-import { EngineState } from '@etherealengine/spatial/src/EngineState'
-import { XRState } from '@etherealengine/spatial/src/xr/XRState'
-import { getState } from '@etherealengine/hyperflux'
+import { isDev } from '@ir-engine/common/src/config'
+import { EngineState } from '@ir-engine/spatial/src/EngineState'
+import { XRState } from '@ir-engine/spatial/src/xr/XRState'
+import { getState } from '@ir-engine/hyperflux'
 
 import { BotHookFunctions } from './botHookFunctions'
 import { sendXRInputData, simulateXR } from './xrBotHookFunctions'
-import { defineSystem } from '@etherealengine/ecs/src/SystemFunctions'
-import { SimulationSystemGroup } from '@etherealengine/ecs/src/SystemGroups'
-import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
+import { defineSystem } from '@ir-engine/ecs/src/SystemFunctions'
+import { SimulationSystemGroup } from '@ir-engine/ecs/src/SystemGroups'
+import { BotUserAgent } from '@ir-engine/common/src/constants/BotUserAgent'
 
 const setupBotKey = 'ee.bot.setupBotKey'
 

@@ -1,5 +1,5 @@
 {
-  "name": "etherealengine/ee-bot",
+  "name": "ir-engine/ir-bot",
   "version": "0.0.0",
   "engineVersion": "1.6.0",
   "description": "A test bot using puppeteer"

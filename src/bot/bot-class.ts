@@ -5,7 +5,7 @@ import * as puppeteer from 'puppeteer'
 import { Browser, BrowserConnectOptions, BrowserLaunchArgumentOptions, LaunchOptions, Page } from 'puppeteer'
 import { URL } from 'url'
 
-import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
+import { BotUserAgent } from '@ir-engine/common/src/constants/BotUserAgent'
 
 import { getOS } from './utils/getOS'
 import { makeAdmin } from './utils/make-user-admin'
@@ -23,7 +23,7 @@ type BotProps = {
 /**
  * Main class for creating a bot.
  */
-export class EtherealEngineBot {
+export class IREngineBot {
   activeChannel
   headless: Boolean
   ci: Boolean

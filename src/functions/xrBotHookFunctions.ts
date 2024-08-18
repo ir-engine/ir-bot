@@ -2,9 +2,9 @@
 
 import { Quaternion, Vector3 } from 'three'
 
-import { XRState } from '@etherealengine/spatial/src/xr/XRState'
-import { getMutableState } from '@etherealengine/hyperflux'
-import { requestXRSession } from '@etherealengine/spatial/src/xr/XRSessionFunctions'
+import { XRState } from '@ir-engine/spatial/src/xr/XRState'
+import { getMutableState } from '@ir-engine/hyperflux'
+import { requestXRSession } from '@ir-engine/spatial/src/xr/XRSessionFunctions'
 
 import { WebXREventDispatcher } from '../../webxr-emulator/WebXREventDispatcher'
 import { POLYFILL_ACTIONS } from '../../webxr-emulator/actions'

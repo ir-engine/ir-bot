@@ -1,10 +1,10 @@
 {
-  "name": "@etherealengine/ee-bot",
+  "name": "@ir-engine/ir-bot",
   "version": "0.5.8",
   "description": "A test bot using puppeteer",
   "repository": {
     "type": "git",
-    "url": "git://github.com/etherealengine/etherealengine.git"
+    "url": "git://github.com/ir-engine/ir-engine.git"
   },
   "engines": {
     "node": ">= 16.3.0"

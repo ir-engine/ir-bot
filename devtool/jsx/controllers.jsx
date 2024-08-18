@@ -18,9 +18,9 @@ import {
 	applyControllerButtonPressed,
 	toggleControllerVisibility,
 } from '../js/messenger';
-import config from '@etherealengine/common/src/config';
+import config from '@ir-engine/common/src/config';
 
-const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/ir-engine/ir-bot/devtool'
 
 import { Joystick } from '../js/joystick';
 import React from 'react';

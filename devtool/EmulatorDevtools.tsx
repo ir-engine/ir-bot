@@ -1,7 +1,7 @@
 import React from 'react'
-import { useHookstate, useImmediateEffect, useMutableState } from '@etherealengine/hyperflux'
-import Button from '@etherealengine/ui/src/primitives/tailwind/Button'
-import { endXRSession, requestXRSession } from '@etherealengine/spatial/src/xr/XRSessionFunctions'
+import { useHookstate, useImmediateEffect, useMutableState } from '@ir-engine/hyperflux'
+import Button from '@ir-engine/ui/src/primitives/tailwind/Button'
+import { endXRSession, requestXRSession } from '@ir-engine/spatial/src/xr/XRSessionFunctions'
 
 import { EmulatorSettings, emulatorStates } from './js/emulatorStates.js'
 import EmulatedDevice from './js/emulatedDevice.js'
@@ -12,7 +12,7 @@ import { overrideXR } from '../src/functions/xrBotHookFunctions.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
-import { XRState } from '@etherealengine/spatial/src/xr/XRState.js'
+import { XRState } from '@ir-engine/spatial/src/xr/XRState.js'
 
 const setup = async (mode: 'immersive-vr' | 'immersive-ar') => {
   await overrideXR({ mode })

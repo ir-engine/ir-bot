@@ -11,7 +11,7 @@ const botManager = new BotManager();
 app.use(bodyParser());
 
 router.get('/', (ctx) => {
-  ctx.body = { status: 'ee-bot api is working' };
+  ctx.body = { status: 'ir-bot api is working' };
 });
 
 router.get('/bots', (ctx) => {

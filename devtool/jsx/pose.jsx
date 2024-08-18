@@ -13,8 +13,8 @@ import { changeInputMode } from '../js/messenger';
 import initKeyboardControl from '../js/keyboard';
 
 
-import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
+import config from '@ir-engine/common/src/config';
+const assetURL = config.client.fileServer + '/projects/ir-engine/ir-bot/devtool'
 
 export default function PoseBar({ device, setInputMode }) {
 	const saveDefaultPoseRef = React.useRef();

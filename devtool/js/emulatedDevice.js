@@ -23,8 +23,8 @@ import { TransformControls } from 'three/examples/jsm/controls/TransformControls
 import { generateUUID } from 'three/src/math/MathUtils.js';
 import { updateUserObjects } from './messenger';
 
-import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
+import config from '@ir-engine/common/src/config';
+const assetURL = config.client.fileServer + '/projects/ir-engine/ir-bot/devtool'
 
 const SELECTION_MOUSE_DOWN_THRESHOLD = 300;
 

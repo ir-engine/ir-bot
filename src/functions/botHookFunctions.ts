@@ -1,11 +1,11 @@
 import { MathUtils, Quaternion, Vector3 } from 'three'
 
-import { iterativeMapToObject } from '@etherealengine/common/src/utils/mapToObject'
-import { Engine } from '@etherealengine/ecs/src/Engine'
-import { EngineState } from '@etherealengine/spatial/src/EngineState'
-import { getComponent } from '@etherealengine/ecs/src/ComponentFunctions'
-import { TransformComponent } from '@etherealengine/spatial/src/transform/components/TransformComponent'
-import { getState } from '@etherealengine/hyperflux'
+import { iterativeMapToObject } from '@ir-engine/common/src/utils/mapToObject'
+import { Engine } from '@ir-engine/ecs/src/Engine'
+import { EngineState } from '@ir-engine/spatial/src/EngineState'
+import { getComponent } from '@ir-engine/ecs/src/ComponentFunctions'
+import { TransformComponent } from '@ir-engine/spatial/src/transform/components/TransformComponent'
+import { getState } from '@ir-engine/hyperflux'
 
 import { BotHooks, XRBotHooks } from '../enums/BotHooks'
 import {
@@ -21,10 +21,10 @@ import {
   xrInitialized,
   xrSupported
 } from './xrBotHookFunctions'
-import { XRState } from '@etherealengine/spatial/src/xr/XRState'
-import { NetworkState } from '@etherealengine/network'
-import { AvatarComponent } from '@etherealengine/engine/src/avatar/components/AvatarComponent'
-import { BotUserAgent } from '@etherealengine/common/src/constants/BotUserAgent'
+import { XRState } from '@ir-engine/spatial/src/xr/XRState'
+import { NetworkState } from '@ir-engine/network'
+import { AvatarComponent } from '@ir-engine/engine/src/avatar/components/AvatarComponent'
+import { BotUserAgent } from '@ir-engine/common/src/constants/BotUserAgent'
 
 export const BotHookFunctions = {
   [BotHooks.IsBot]: isBot,
