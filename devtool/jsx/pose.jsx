@@ -14,7 +14,7 @@ import initKeyboardControl from '../js/keyboard';
 
 
 import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 export default function PoseBar({ device, setInputMode }) {
 	const saveDefaultPoseRef = React.useRef();

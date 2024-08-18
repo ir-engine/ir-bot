@@ -17,7 +17,7 @@ import React from 'react';
 import { createAnalogPressFunction } from './controllers.jsx';
 
 import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 
 export default function HandPanel({ deviceKey, device }) {

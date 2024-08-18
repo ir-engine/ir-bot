@@ -18,7 +18,7 @@ import React from 'react';
 import { changeRoomDimension } from '../js/messenger';
 
 import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 export default function Inspector({ device, inputMode }) {
 	const sceneContainerRef = React.useRef();

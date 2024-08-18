@@ -24,7 +24,7 @@ import { generateUUID } from 'three/src/math/MathUtils.js';
 import { updateUserObjects } from './messenger';
 
 import config from '@etherealengine/common/src/config';
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 const SELECTION_MOUSE_DOWN_THRESHOLD = 300;
 

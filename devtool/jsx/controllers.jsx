@@ -20,7 +20,7 @@ import {
 } from '../js/messenger';
 import config from '@etherealengine/common/src/config';
 
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 import { Joystick } from '../js/joystick';
 import React from 'react';
