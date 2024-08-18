@@ -15,7 +15,7 @@ import {
 } from '../js/messenger';
 import config from '@etherealengine/common/src/config';
 
-const assetURL = config.client.fileServer + '/projects/ee-bot/devtool'
+const assetURL = config.client.fileServer + '/projects/etherealengine/ee-bot/devtool'
 
 import { DEVICE_DEFINITIONS } from '../js/devices';
 import { EmulatorSettings } from '../js/emulatorStates';

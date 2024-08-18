@@ -1,5 +1,5 @@
 {
-  "name": "ee-bot",
+  "name": "@etherealengine/ee-bot",
   "version": "0.5.8",
   "description": "A test bot using puppeteer",
   "repository": {

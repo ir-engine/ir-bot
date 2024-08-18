@@ -16,7 +16,7 @@ WORKDIR /app
 
 COPY --from=builder /app ./
 #Clone the repository and install dependecies  
-WORKDIR /app/packages/projects/projects/ee-bot 
+WORKDIR /app/packages/projects/projects/etherealengine/ee-bot 
 RUN git clone "https://github.com/SYBIOTE/ee-bot" .
 RUN npm install
 # run API
