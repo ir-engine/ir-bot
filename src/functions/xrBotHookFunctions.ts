@@ -273,7 +273,6 @@ export function updateController(args: { objectName: string; position: number[];
 }
 
 export async function simulateXR() {
-  // await loadScript(getState(EngineState).publicPath + '/scripts/webxr-polyfill.js')
   await overrideXR({ mode: 'immersive-vr' })
   await xrSupported()
   await startXR()
