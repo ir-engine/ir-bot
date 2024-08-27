@@ -15,14 +15,15 @@
   "npmClient": "npm",
   "main": "src/index.ts",
   "scripts": {
+    "build": "tsc",
+    "check-errors": "tsc --noemit",
     "dev": "ts-node --swc ./src/index.ts",
     "dev-koa": "ts-node --swc ./src/index_koa.ts",
-    "build": "tsc",
-    "test": "vitest run",
-    "check-errors": "tsc --noemit",
-    "validate": "npm run test",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "precommit": "no-master-commits -b main"
+    "format-scss": "stylelint \"**/*.scss\" --fix",
+    "format-staged": "lint-staged",
+    "test": "vitest run",
+    "validate": "npm run test"
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
@@ -44,5 +45,16 @@
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa-router": "^7.4.4",
     "@types/mocha": "^10.0.1"
+  },
+  "pre-commit": [
+    "format-staged"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write \"**/*.{ts,tsx}\""
+    ],
+    "*.scss": [
+      "stylelint \"**/*.scss\" --fix"
+    ]
   }
 }
