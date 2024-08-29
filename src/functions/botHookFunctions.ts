@@ -95,7 +95,6 @@ export function serializeEngine() {
   const engine = {
     userId: Engine.instance.userID,
     store: Engine.instance.store,
-    publicPath: Engine.instance.store.publicPath,
     xrFrame: getState(XRState).xrFrame,
     isEditor: getState(EngineState).isEditor
   }
