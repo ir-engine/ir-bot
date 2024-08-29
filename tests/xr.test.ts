@@ -8,8 +8,8 @@ import { POLYFILL_ACTIONS } from '../webxr-emulator/actions'
 import { getMutableState, getState } from '@ir-engine/hyperflux'
 import { XRState } from '@ir-engine/spatial/src/xr/XRState'
 import { EngineState } from '@ir-engine/spatial/src/EngineState'
-import { RendererComponent, initializeEngineRenderer } from '@ir-engine/spatial/src/renderer/WebGLRendererSystem'
-import { ECSState, Timer, getMutableComponent, setComponent } from '@ir-engine/ecs'
+import { RendererComponent } from '@ir-engine/spatial/src/renderer/WebGLRendererSystem'
+import { ECSState, Timer, setComponent } from '@ir-engine/ecs'
 
 const deviceDefinition = {
   id: 'Oculus Quest',
