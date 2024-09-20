@@ -26,7 +26,7 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "outDir": "./dist",
-    "types": ["vite/client", "@types/mocha"]
+    "types": ["vite/client"]
   },
   "exclude": [
     "../projects/projects/**",

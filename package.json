@@ -1,6 +1,7 @@
 {
   "name": "@ir-engine/ir-bot",
   "version": "0.5.8",
+  "type": "module",
   "description": "A test bot using puppeteer",
   "repository": {
     "type": "git",
