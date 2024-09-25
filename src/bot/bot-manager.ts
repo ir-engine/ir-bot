@@ -20,11 +20,11 @@ export class BotManager {
     this.options = options
   }
 
-  findBotById(id:string) {
+  findBotById(id: string) {
     return this.bots[id]
   }
 
-  addBot(id:string,name:string ,options:any = this.options) {
+  addBot(id: string, name: string, options: any = this.options) {
     const foundBot = this.findBotById(id)
     if (foundBot) {
       return foundBot
@@ -40,9 +40,9 @@ export class BotManager {
     return bot
   }
 
-  removeBot(id:string){
+  removeBot(id: string) {
     const foundBot = this.findBotById(id)
-    if(!foundBot){
+    if (!foundBot) {
       return null
     }
     foundBot.quit()
@@ -50,19 +50,19 @@ export class BotManager {
     return foundBot
   }
 
-  getActions(){
+  getActions() {
     return this.actions
   }
-  
-  addAction(botId:string, action:BotAction) {
+
+  addAction(botId: string, action: BotAction) {
     this.actions.push({ botId, action })
   }
 
   async run() {
-    console.log("bots : ",this.bots)
+    console.log('bots : ', this.bots)
 
     for (const botAction of this.actions) {
-      const { botId, action }:{botId:string,action} = botAction
+      const { botId, action }: { botId: string; action } = botAction
       const bot = this.findBotById(botId)
 
       if (!bot) {
@@ -190,5 +190,3 @@ export class BotManager {
     this.bots = {}
   }
 }
-
-
