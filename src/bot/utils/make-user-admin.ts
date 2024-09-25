@@ -29,9 +29,9 @@ import { v4 } from 'uuid'
 import { ScopeID, ScopeTypeInterface, scopePath } from '@ir-engine/common/src/schemas/scope/scope.schema'
 import { UserType, userPath } from '@ir-engine/common/src/schemas/user/user.schema'
 
-const dotenv = require('dotenv-flow')
+import dotenv from 'dotenv-flow'
 import appRootPath from 'app-root-path'
-const { scopeTypeSeed } = require('@ir-engine/server-core/src/scope/scope-type/scope-type.seed')
+import { scopeTypeSeed } from '@ir-engine/server-core/src/scope/scope-type/scope-type.seed'
 
 dotenv.config({
   path: appRootPath.path,
