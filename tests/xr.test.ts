@@ -1,6 +1,6 @@
 import { mockEngineRenderer } from '@ir-engine/spatial/tests/util/MockEngineRenderer'
 import { createEngine, destroyEngine } from '@ir-engine/ecs/src/Engine'
-import { initializeSpatialEngine } from '@ir-engine/spatial/src/initializeEngine'
+import { initializeSpatialEngine, initializeSpatialViewer } from '@ir-engine/spatial/src/initializeEngine'
 import { requestXRSession } from '@ir-engine/spatial/src/xr/XRSessionFunctions'
 import { describe, it, beforeEach, afterEach, assert, beforeAll } from 'vitest'
 import { WebXREventDispatcher } from '../webxr-emulator/WebXREventDispatcher'
@@ -43,8 +43,7 @@ const deviceDefinition = {
   ]
 }
 
-/** @todo fix */
-describe.skip('WebXR', () => {
+describe('WebXR', () => {
   beforeAll(async () => {
     const { CustomWebXRPolyfill } = await import('../webxr-emulator/CustomWebXRPolyfill')
     new CustomWebXRPolyfill()
@@ -53,6 +52,7 @@ describe.skip('WebXR', () => {
   beforeEach(async () => {
     createEngine()
     initializeSpatialEngine()
+    initializeSpatialViewer()
 
     const timer = Timer((time, xrFrame) => {
       getMutableState(XRState).xrFrame.set(xrFrame)
