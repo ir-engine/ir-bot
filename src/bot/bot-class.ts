@@ -193,12 +193,14 @@ export class IREngineBot {
   async clickEmoteButtonAndSelectEmote() {
     const emoteButton = await this.page.waitForSelector('[aria-label="Emote"]')
     if (emoteButton) {
-      await emoteButton.click().catch(err => {
-        console.error('Error clicking emoteButton:', err);
+      await emoteButton.click().catch((err) => {
+        console.error('Error clicking emoteButton:', err)
       })
       await this.delay(6000)
 
-      const imgElement = await this.page.waitForSelector('button.MuiButtonBase-root-IIrwk.ispAN.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root-gwFoGh.hLKZiD._menuItem_fba7b_146:nth-child(0)')
+      const imgElement = await this.page.waitForSelector(
+        'button.MuiButtonBase-root-IIrwk.ispAN.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root-gwFoGh.hLKZiD._menuItem_fba7b_146:nth-child(0)'
+      )
       if (imgElement) {
         imgElement.click()
         console.log('Button clicked successfully.', imgElement)
@@ -215,11 +217,11 @@ export class IREngineBot {
     const savebutton = await this.page.waitForSelector('li[tabindex="-1"][role="menuitem"]')
     if (savebutton) {
       await savebutton.click()
-      console.log("savebutton clicked")
+      console.log('savebutton clicked')
       await this.delay(4000)
     }
     const submitbutton = await this.page.waitForSelector('button[type="submit"]')
-    if (submitbutton){
+    if (submitbutton) {
       await submitbutton.click()
       console.log('submitbutton clicked')
       await this.delay(10000)
@@ -444,7 +446,7 @@ export class IREngineBot {
         '--use-fake-device-for-media-stream',
         '--disable-web-security=1',
         //'--no-first-run',
-        '--allow-file-access=1',
+        '--allow-file-access=1'
         //'--mute-audio',
       ].filter(Boolean),
       ...this.detectOsOption()
