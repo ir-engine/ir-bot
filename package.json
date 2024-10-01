@@ -18,8 +18,8 @@
   "scripts": {
     "build": "tsc",
     "check-errors": "tsc --noemit",
-    "dev": "ts-node --swc ./src/index.ts",
-    "dev-koa": "ts-node --swc ./src/index_koa.ts",
+    "dev": "vite-node ./src/index.ts",
+    "dev-koa": "vite-node ./src/index_koa.ts",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "format-scss": "stylelint \"**/*.scss\" --fix",
     "format-staged": "lint-staged",
@@ -35,7 +35,6 @@
     "koa-router": "^12.0.0",
     "localforage": "^1.10.0",
     "puppeteer": "^19.6.3",
-    "ts-node": "10.9.1",
     "webxr-polyfill": "github:felixtrz/webxr-polyfill#81d2db4f01b518f2c42b74a90973dac095515e9f"
   },
   "license": "ISC",
