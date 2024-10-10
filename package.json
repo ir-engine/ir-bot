@@ -1,6 +1,7 @@
 {
   "name": "@ir-engine/ir-bot",
   "version": "0.5.8",
+  "type": "module",
   "description": "A test bot using puppeteer",
   "repository": {
     "type": "git",
@@ -17,8 +18,8 @@
   "scripts": {
     "build": "tsc",
     "check-errors": "tsc --noemit",
-    "dev": "ts-node --swc ./src/index.ts",
-    "dev-koa": "ts-node --swc ./src/index_koa.ts",
+    "dev": "vite-node ./src/index.ts",
+    "dev-koa": "vite-node ./src/index_koa.ts",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "format-scss": "stylelint \"**/*.scss\" --fix",
     "format-staged": "lint-staged",
@@ -34,17 +35,13 @@
     "koa-router": "^12.0.0",
     "localforage": "^1.10.0",
     "puppeteer": "^19.6.3",
-    "ts-node": "10.9.1",
     "webxr-polyfill": "github:felixtrz/webxr-polyfill#81d2db4f01b518f2c42b74a90973dac095515e9f"
   },
   "license": "ISC",
   "devDependencies": {
-    "vitest": "2.0.4",
-    "@swc/core": "1.3.41",
     "@types/expect-puppeteer": "^5.0.3",
     "@types/koa-bodyparser": "^4.3.10",
-    "@types/koa-router": "^7.4.4",
-    "@types/mocha": "^10.0.1"
+    "@types/koa-router": "^7.4.4"
   },
   "pre-commit": [
     "format-staged"
