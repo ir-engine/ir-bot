@@ -1,6 +1,11 @@
 import { mockEngineRenderer } from '@ir-engine/spatial/tests/util/MockEngineRenderer'
 import { createEngine, destroyEngine } from '@ir-engine/ecs/src/Engine'
-import { initializeSpatialEngine, initializeSpatialViewer } from '@ir-engine/spatial/src/initializeEngine'
+import {
+  destroySpatialEngine,
+  destroySpatialViewer,
+  initializeSpatialEngine,
+  initializeSpatialViewer
+} from '@ir-engine/spatial/src/initializeEngine'
 import { requestXRSession } from '@ir-engine/spatial/src/xr/XRSessionFunctions'
 import { describe, it, beforeEach, afterEach, assert, beforeAll } from 'vitest'
 import { WebXREventDispatcher } from '../webxr-emulator/WebXREventDispatcher'
@@ -54,7 +59,7 @@ describe('WebXR', () => {
     initializeSpatialEngine()
     initializeSpatialViewer()
 
-    const timer = Timer((time, xrFrame) => {
+    const timer = Timer((_time, xrFrame) => {
       getMutableState(XRState).xrFrame.set(xrFrame)
       // executeSystems(time)
       getMutableState(XRState).xrFrame.set(null)
@@ -67,7 +72,9 @@ describe('WebXR', () => {
   })
 
   afterEach(async () => {
-    await destroyEngine()
+    destroySpatialViewer()
+    destroySpatialEngine()
+    return await destroyEngine()
   })
 
   it('can define and initialize a device', async () => {
