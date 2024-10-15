@@ -1,7 +1,6 @@
 {
   "name": "@ir-engine/ir-bot",
   "version": "0.5.8",
-  "type": "module",
   "description": "A test bot using puppeteer",
   "repository": {
     "type": "git",
@@ -18,8 +17,8 @@
   "scripts": {
     "build": "tsc",
     "check-errors": "tsc --noemit",
-    "dev": "vite-node ./src/index.ts",
-    "dev-koa": "vite-node ./src/index_koa.ts",
+    "dev": "ts-node --swc ./src/index.ts",
+    "dev-koa": "ts-node --swc ./src/index_koa.ts",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "format-scss": "stylelint \"**/*.scss\" --fix",
     "format-staged": "lint-staged",
