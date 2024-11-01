@@ -48,7 +48,7 @@ const deviceDefinition = {
   ]
 }
 
-describe.skip('WebXR', () => {
+describe('WebXR', () => {
   beforeAll(async () => {
     const { CustomWebXRPolyfill } = await import('../webxr-emulator/CustomWebXRPolyfill')
     new CustomWebXRPolyfill()
