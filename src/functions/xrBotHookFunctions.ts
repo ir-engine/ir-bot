@@ -6,14 +6,14 @@ import { XRState } from '@ir-engine/spatial/src/xr/XRState'
 import { getMutableState } from '@ir-engine/hyperflux'
 import { requestXRSession } from '@ir-engine/spatial/src/xr/XRSessionFunctions'
 
-import { WebXREventDispatcher } from '../../webxr-emulator/WebXREventDispatcher'
-import { POLYFILL_ACTIONS } from '../../webxr-emulator/actions'
+import { WebXREventDispatcher } from '@ir-engine/spatial/tests/webxr/emulator/WebXREventDispatcher'
+import { POLYFILL_ACTIONS } from '@ir-engine/spatial/tests/webxr/emulator/actions'
 
 export async function overrideXR(args: { mode: 'immersive-vr' | 'immersive-ar' }) {
   // inject the webxr polyfill from the webxr emulator source - this is a script added by the bot
   // globalThis.WebXRPolyfillInjection()
 
-  const { CustomWebXRPolyfill } = await import('../../webxr-emulator/CustomWebXRPolyfill')
+  const { CustomWebXRPolyfill } = await import('@ir-engine/spatial/tests/webxr/emulator/CustomWebXRPolyfill')
   new CustomWebXRPolyfill()
   // override session supported request, it hangs indefinitely for some reason
   ;(navigator as any).xr.isSessionSupported = () => {
