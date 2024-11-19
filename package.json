@@ -32,9 +32,7 @@
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0",
-    "localforage": "^1.10.0",
-    "puppeteer": "^19.6.3",
-    "webxr-polyfill": "github:felixtrz/webxr-polyfill#81d2db4f01b518f2c42b74a90973dac095515e9f"
+    "puppeteer": "^19.6.3"
   },
   "license": "ISC",
   "devDependencies": {
