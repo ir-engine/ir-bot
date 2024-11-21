@@ -137,7 +137,7 @@ export const EmulatorDevtools = (props: { mode: 'immersive-vr' | 'immersive-ar' 
         id="devtools"
         className="flex-no-wrap m-0 flex h-full h-full select-none flex-col overflow-hidden overflow-hidden bg-gray-900 text-xs text-gray-900"
       >
-        <div className="flex-no-wrap flex h-10 select-none flex-row bg-gray-800 text-xs text-gray-900">
+        <div className="flex-no-wrap flex h-10 select-none flex-row bg-gray-800 text-xs text-gray-900 z-50">
           <Button className="my-1 ml-auto mr-6 px-10" onClick={toggleXR} disabled={xrState.requestingSession.value}>
             {(xrActive ? 'Exit ' : 'Enter ') + (props.mode === 'immersive-ar' ? 'AR' : 'VR')}
           </Button>
