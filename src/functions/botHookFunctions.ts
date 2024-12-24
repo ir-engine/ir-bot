@@ -2,7 +2,7 @@ import { MathUtils, Quaternion, Vector3 } from 'three'
 
 import { iterativeMapToObject } from '@ir-engine/common/src/utils/mapToObject'
 import { Engine } from '@ir-engine/ecs/src/Engine'
-import { EngineState } from '@ir-engine/spatial/src/EngineState'
+import { EngineState } from '@ir-engine/ecs'
 import { getComponent } from '@ir-engine/ecs/src/ComponentFunctions'
 import { TransformComponent } from '@ir-engine/spatial/src/transform/components/TransformComponent'
 import { getState } from '@ir-engine/hyperflux'

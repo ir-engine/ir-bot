@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { isDev } from '@ir-engine/common/src/config'
-import { EngineState } from '@ir-engine/spatial/src/EngineState'
 import { XRState } from '@ir-engine/spatial/src/xr/XRState'
 import { getState } from '@ir-engine/hyperflux'
 
