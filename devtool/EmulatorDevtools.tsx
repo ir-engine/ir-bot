@@ -35,8 +35,7 @@ import Devtool from './jsx/app'
 import devtoolCSS from './styles/index.css?inline'
 
 import { XRState } from '@ir-engine/spatial/src/xr/XRState'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 import { WebXREventDispatcher } from '@ir-engine/spatial/tests/webxr/emulator/WebXREventDispatcher'
 import { POLYFILL_ACTIONS } from '@ir-engine/spatial/tests/webxr/emulator/actions'
 

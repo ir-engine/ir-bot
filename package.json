@@ -26,7 +26,6 @@
     "validate": "npm run test"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3",
     "geometry-interfaces": "^1.1.4",
     "gl-matrix": "^3.1.0",
     "koa": "^2.14.2",
