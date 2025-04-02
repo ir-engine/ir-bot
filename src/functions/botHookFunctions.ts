@@ -96,7 +96,7 @@ export function serializeEngine() {
     userId: Engine.instance.userID,
     store: Engine.instance.store,
     xrFrame: getState(XRState).xrFrame,
-    isEditor: getState(EngineState).isEditor
+    isEditor: getState(EngineState).isEditing
   }
 
   console.log(JSON.stringify(iterativeMapToObject(engine)))
