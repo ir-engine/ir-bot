@@ -4,7 +4,7 @@ import { Vector3 } from 'three'
 import { afterAll, assert, beforeAll, describe, it } from 'vitest'
 
 import { UserID } from '@ir-engine/common/src/schemas/user/user.schema'
-import { NetworkPeer } from '@ir-engine/network'
+import { NetworkPeer } from '@ir-engine/hyperflux'
 import { delay } from '@ir-engine/spatial/src/common/functions/delay'
 
 const vector3 = new Vector3()
