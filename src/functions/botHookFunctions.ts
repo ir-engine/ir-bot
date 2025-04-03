@@ -21,7 +21,7 @@ import {
   xrSupported
 } from './xrBotHookFunctions'
 import { XRState } from '@ir-engine/spatial/src/xr/XRState'
-import { NetworkState } from '@ir-engine/network'
+import { NetworkState } from '@ir-engine/hyperflux'
 import { AvatarComponent } from '@ir-engine/engine/src/avatar/components/AvatarComponent'
 import { BotUserAgent } from '@ir-engine/common/src/constants/BotUserAgent'
 import { EngineState } from '@ir-engine/ecs'
